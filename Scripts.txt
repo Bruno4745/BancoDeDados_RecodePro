@@ -1,0 +1,63 @@
+Criando um banco de dados
+
+CREATE SCHEMA `fullstackeletro` ;
+
+=================================
+
+Criando a tabela produto, ja definindo as propriedades e tipo de cada coluna
+
+CREATE TABLE `fullstackeletro`.`produto` (
+  `idproduto` INT NOT NULL AUTO_INCREMENT,
+  `categoria` VARCHAR(45) NOT NULL,
+  `descricao` VARCHAR(150) NOT NULL,
+  `preco` DECIMAL(8,2) NULL,
+  `precofinal` DECIMAL(8,2) NULL,
+  `imagem` VARCHAR(255) NULL,
+  PRIMARY KEY (`idproduto`),
+  UNIQUE INDEX `imagem_UNIQUE` (`imagem` ASC) VISIBLE);
+
+=================================
+
+Inserindo todos os dados na tabela produto
+
+INSERT INTO fullstackeletro.produto (categoria, descricao, preco, precofinal, imagem)
+VALUES ('geladeira', 'Geladeira Brastemp Frost Free Duplex 375 litros Inox', 3479, 2384.10, 'imagens/produtos/geladeira_brastemp.png'),
+('lavadouraroupa', 'Lavadoura de Roupas Samsung WD4000 Inox Look - 11kg', 4359, 3299, 'imagens/produtos/lavaroupa_samsung.png'),
+('microondas', 'Micro-ondas Brastemp 38L com Grill Ative', 1567.9, 879.9, 'imagens/produtos/microondas_brastemp.png'),
+('microondas', 'Micro-ondas Electrolux MS37R', 599, 539.1, 'imagens/produtos/microondas_electrolux.png'),
+('fogao', 'Fogão 5 Bocas Brastemp', 1599, 1394.1, 'imagens/produtos/fogao_brastemp.png'),
+('lavalouca', 'Lava Louças Electrolux 8 Servicos', 3129, 2799, 'imagens/produtos/lavalouca_selectrolux.png'),
+('geladeira', 'Geladeira Consul CRE44AK Frost Free Duplex', 2879, 2591.1, 'imagens/produtos/geladeira_consul.png'),
+('lavalouca', 'Lava Louças 14 Serviços Brastemp', 5229, 3397.2, 'imagens/produtos/lavalouca_sbrastemp.png'),
+('geladeira', 'Geladeira Cycle Defrost Inox 475L Electrolux', 3339, 2699, 'imagens/produtos/geladeira_eletrolux.png'),
+('fogao', 'Fogão Consul 4 bocas cor Inox', 1059, 979, 'imagens/produtos/fogao_consul.png'),
+('lavadouraroupa', 'Lavadora de Roupas Electrolux Automática 13kg', 1699, 1499, 'imagens/produtos/lavaroupa_eletrolux.png'),
+('microondas', 'Micro-ondas Philco 26L', 629, 499, 'imagens/produtos/microondas_philco.png')
+
+
+=================================
+
+Criando a tabela pedidos, ja definindo as propriedades e tipo de cada coluna
+
+CREATE TABLE `fullstackeletro`.`pedidos` (
+  `idpedidos` INT NOT NULL AUTO_INCREMENT,
+  `nome_cliente` VARCHAR(45) NOT NULL,
+  `endereco` VARCHAR(90) NOT NULL,
+  `telefone` VARCHAR(45) NOT NULL,
+  `nome_produto` VARCHAR(150) NOT NULL,
+  `valor_unit` DECIMAL(8,2) NOT NULL,
+  `quantidade` INT NOT NULL,
+  `valor_total` DECIMAL(8,2) NOT NULL,
+  PRIMARY KEY (`idpedidos`));
+
+=================================
+
+Inserindo dados na tabela pedidos
+
+INSERT INTO fullstackeletro.pedidos (nome_cliente, endereco, telefone, nome_produto, valor_unit, quantidade, valor_total)
+VALUES ('João', 'Rua ', '(11)91234-5678', 'Geladeira Cycle Defrost Inox 475L Electrolux', 2699.00, 1, (valor_unit*quantidade)),
+('Carlos', 'Av. ', '(11)3999-9999', 'Micro-ondas Philco 26L', 499.00, 2, valor_unit*quantidade),
+('Maria', 'Rua ', '(21)99876-5432', 'Fogão 5 Bocas Brastemp', 1394.10, 1, valor_unit*quantidade),
+('Paula', 'Rua ', '(11)92222-2222', 'Lavadora de Roupas Electrolux Automática 13kg', 1499.00, 3, valor_unit*quantidade),
+('Jorge', 'Av. ', '(21)98888-8888', 'Lava Louças 14 Serviços Brastemp', 3397.20, 1, valor_unit*quantidade),
+('Amanda', 'Rua ', '(21)3333-3333', 'Geladeira Consul CRE44AK Frost Free Duplex', 2591.10, 2, valor_unit*quantidade)
